@@ -72,8 +72,8 @@ h5 {
 .w-current .w-icon {
   align-self: self-start; /* Dont stretch icon */
   /* transform: translateY(-0.5em); */
-  margin: -0.5rem;
   display: block;
+  margin: 0.2rem;
 }
 
 .w-current .w-degrees {
@@ -97,7 +97,7 @@ h5 {
 .w-forecast {
   margin: 1rem 0;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 .w-f-day {
