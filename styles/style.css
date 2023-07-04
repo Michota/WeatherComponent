@@ -1,7 +1,7 @@
 /* === === === TYPOGRAPHY AND FONTS === === === */
 
 /* === Font Import == */
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap");
 
 /* 
 --- 01 TYPOGRAPHY SYSTEM
@@ -23,6 +23,7 @@ body {
   background-color: darkslategray;
   color: white;
   font-size: 1.6rem;
+  font-family: "Inter", sans-serif;
 }
 
 /* General settings */
@@ -47,8 +48,118 @@ h5 {
 
 /* === Weather Component === */
 
-.weather-container {
-  width: 200px;
-  height: 200px;
-  background: url(/imgs/weather/clouds.jpg);
+.weather-component {
+  padding: 2rem;
+  background-image: url("/imgs/weather/clouds.jpg");
+  background-size: auto;
+  width: max-content;
+  border-radius: 2rem;
+  font-size: 0.8em; /* Setting a font-size for all of the component */
+  user-select: none;
+}
+
+.w-top-part {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 10rem;
+}
+
+.w-current {
+  display: flex;
+}
+
+.w-current .w-icon {
+  align-self: self-start; /* Dont stretch icon */
+  /* transform: translateY(-0.5em); */
+  margin: -0.5rem;
+  display: block;
+}
+
+.w-current .w-degrees {
+  font-size: 1.5em;
+}
+
+.w-degrees::after {
+  content: "°C";
+  font-size: 0.6em;
+  position: absolute;
+}
+
+.w-degrees:empty:after {
+  content: "";
+}
+
+.w-details {
+  font-size: 0.75em;
+}
+
+.w-forecast {
+  margin: 1rem 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.w-f-day {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8em;
+}
+
+.w-location {
+  text-align: right;
+  font-size: 0.8em;
+}
+
+.w-copyright {
+  font-weight: 400;
+  font-size: 0.5em;
+  opacity: 0.2;
+}
+
+.w-copyright a {
+  text-decoration: inherit;
+  color: inherit;
+}
+
+/* === Weather Component Mini Version === */
+
+.weather-component.mini
+  :where(.w-details, .w-description, .w-forecast, .w-location) {
+  display: none;
+}
+
+.weather-component.mini {
+  padding: 1rem;
+}
+
+.weather-component.mini .w-copyright {
+  visibility: hidden;
+  position: relative;
+  font-size: 0;
+}
+
+.weather-component.mini .w-copyright::after {
+  content: "WeatherAPI";
+  visibility: visible;
+  position: static;
+  left: 0;
+  font-size: 0.5rem;
+}
+
+.weather-component.mini .w-degrees::after {
+  content: "°C";
+  font-size: 1em;
+  position: static;
+}
+
+.weather-component.mini .w-degrees:empty:after {
+  content: "";
+}
+
+.weather-component.mini .w-c-text {
+  display: flex;
+  align-items: center;
 }
