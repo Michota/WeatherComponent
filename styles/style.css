@@ -1,0 +1,54 @@
+/* === === === TYPOGRAPHY AND FONTS === === === */
+
+/* === Font Import == */
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
+
+/* 
+--- 01 TYPOGRAPHY SYSTEM
+- SPACING SYSTEM (px)
+2 / 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 80 / 96 / 128
+
+- FONT SIZE SYSTEM (px)
+10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74 / 86 / 98
+
+- FONT WEIGHTS: 
+Deafult: 400 / 500 / 700
+
+- FONT LINE: 
+1.2
+*/
+
+/* FIXME: Temporary settings*/
+body {
+  background-color: darkslategray;
+  color: white;
+  font-size: 1.6rem;
+}
+
+/* General settings */
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-weight: 400;
+}
+
+/* === === === Components === === ===*/
+
+/* === Weather Component === */
+
+.weather-container {
+  width: 200px;
+  height: 200px;
+  background: url(/imgs/weather/clouds.jpg);
+}
