@@ -1,6 +1,15 @@
 /* === Font Import == */
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap");
 
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
 /* === Weather Component === */
 
 .weather-component > :is(*, *::after, *::before, ) {
@@ -11,6 +20,10 @@
 }
 
 .weather-component {
+  position: absolute;
+  bottom: 1vh;
+  right: 0;
+
   color: white;
   font-size: 1.6rem;
   font-family: "Inter", sans-serif;
