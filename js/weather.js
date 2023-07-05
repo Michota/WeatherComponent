@@ -131,7 +131,7 @@ class Weather {
   }
 
   async _getCode(code, isDay) {
-    const allCodes = await fetch("weather_conditions.json");
+    const allCodes = await fetch("./js/weather_conditions.json");
     const data = await allCodes.json();
     const codeObject = data.filter((el) => el.code === code)[0];
     return isDay ? codeObject.day : codeObject.night;
