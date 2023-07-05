@@ -4,7 +4,6 @@ import {
   WEATHER_API_KEY,
 } from "./config.js";
 
-WEATHER_API_KEY;
 class Weather {
   _data;
   _componentElement;
