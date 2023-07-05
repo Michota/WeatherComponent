@@ -138,14 +138,9 @@ class Weather {
     return isDay ? codeObject.day : codeObject.night;
   }
 
-  async start(parentElement) {
+  async start(parentElement, customLocation) {
     try {
       this._parentElement = parentElement;
-      const options = {
-        enableHighAccuracy: false,
-        timeout: 5000,
-        maximumAge: 0,
-      };
 
       function success(pos) {
         const crd = pos.coords;
@@ -158,11 +153,20 @@ class Weather {
         throw err;
       }
 
-      navigator.geolocation.getCurrentPosition(
-        success.bind(this),
-        error,
-        options
-      );
+      if (customLocation) {
+        this._addComponent(this._parentElement, customLocation);
+      } else {
+        const options = {
+          enableHighAccuracy: false,
+          timeout: 5000,
+          maximumAge: 0,
+        };
+        navigator.geolocation.getCurrentPosition(
+          success.bind(this),
+          error,
+          options
+        );
+      }
     } catch (err) {
       console.error(err);
     }
