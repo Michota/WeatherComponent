@@ -153,7 +153,7 @@ class Weather {
         throw err;
       }
 
-      if (customLocation) {
+      if (customLocation !== undefined) {
         this._addComponent(this._parentElement, customLocation);
       } else {
         const options = {
