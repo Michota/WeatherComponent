@@ -56,6 +56,7 @@ h5 {
   border-radius: 2rem;
   font-size: 0.8em; /* Setting a font-size for all of the component */
   user-select: none;
+  cursor: pointer;
 }
 
 .w-top-part {

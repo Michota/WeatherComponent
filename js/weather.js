@@ -6,9 +6,11 @@ import {
 
 WEATHER_API_KEY;
 class Weather {
-  async callAPI(
+  _data;
+
+  async _callAPI(
     location = "Warsaw",
-    requestType = "current",
+    requestType = "forecast",
     APIKey = WEATHER_API_KEY
   ) {
     const response = await fetch(
@@ -21,16 +23,27 @@ class Weather {
       throw error;
     }
     const data = await response.json();
+    this._data = data;
     return data;
   }
 
-  async addComponent(element, markup) {
-    if (!markup) markup = this.generateMarkup();
-
-    element.insertAdjacentHTML("afterbegin", await markup);
+  async _addComponent(parentElement, location) {
+    let markup;
+    if (!location) {
+      markup = this._generateMarkup();
+    } else {
+      markup = this._generateMarkup(location);
+    }
+    parentElement.insertAdjacentHTML("afterbegin", await markup);
+    const componentEl = parentElement.querySelector(".weather-component");
+    this.clickToShrink(componentEl);
+    return componentEl;
+    // TODO: toggle "mini" class on click
   }
 
-  async generateMarkup(data = this.callAPI(undefined, "forecast")) {
+  // async _generateMarkup(data = this._callAPI(undefined)) {
+  async _generateMarkup(location) {
+    let data = this._callAPI(location);
     const fillTemplateWithData = async () => {
       data = await data;
       console.log(data);
@@ -45,9 +58,9 @@ class Weather {
               </div>
             </div>
             <div class="w-details">
-              <div class="wd-wind">Wind: ${
+              <div class="wd-wind">Wind: ${Math.floor(
                 data.current[`wind_${kOM}`]
-              } ${kOM}</div>
+              )} ${kOM}</div>
               <div class="wd-pressure">Pressure: ${
                 data.current.pressure_mb
               } mb</div>
@@ -58,26 +71,26 @@ class Weather {
           </div>
           <div class="w-forecast">
             <div class="w-f-day wf-one">
-              <div class="w-date">Tommorow (${this.convertApiDate(
+              <div class="w-date">Tommorow (${this._convertApiDate(
                 data.forecast.forecastday[1].date
               )})</div>
               <img class="w-icon" src="${
                 data.forecast.forecastday[1].day.condition.icon
               }" />
-              <div class="w-degrees">${
+              <div class="w-degrees">${Math.floor(
                 data.forecast.forecastday[1].day[`avgtemp_${cOF}`]
-              }</div>
+              )}</div>
             </div>
             <div class="w-f-day wf-two">
-              <div class="w-date">${this.convertApiDate(
+              <div class="w-date">${this._convertApiDate(
                 data.forecast.forecastday[2].date
               )}</div>
               <img class="w-icon" src="${
                 data.forecast.forecastday[2].day.condition.icon
               }" />
-              <div class="w-degrees">${
+              <div class="w-degrees">${Math.floor(
                 data.forecast.forecastday[2].day[`avgtemp_${cOF}`]
-              }</div>
+              )}</div>
             </div>
           </div>
           <div class="w-location">${data.location.name}</div>
@@ -91,13 +104,50 @@ class Weather {
     return await fillTemplateWithData();
   }
 
-  convertApiDate(apiDate) {
+  _convertApiDate(apiDate) {
     const unix = Date.parse(apiDate);
     const newDate = new Date(unix).toLocaleDateString(undefined, {
       month: "2-digit",
       day: "2-digit",
     });
     return newDate;
+  }
+
+  clickToShrink(componentEl) {
+    componentEl.addEventListener("click", function (e) {
+      const allTheComponent = e.target.closest(".weather-component");
+      allTheComponent.classList.toggle("mini");
+    });
+  }
+
+  async start(parentElement) {
+    try {
+      const options = {
+        enableHighAccuracy: false,
+        timeout: 5000,
+        maximumAge: 0,
+      };
+
+      function success(pos) {
+        const crd = pos.coords;
+        console.log(crd);
+        const { latitude, longitude } = crd;
+        this._addComponent(parentElement, [latitude, longitude]);
+      }
+
+      function error(err) {
+        console.warn(`ERROR(${err.code}): ${err.message}`);
+        throw err;
+      }
+
+      navigator.geolocation.getCurrentPosition(
+        success.bind(this),
+        error,
+        options
+      );
+    } catch (err) {
+      console.error(err);
+    }
   }
 }
 

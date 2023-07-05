@@ -1,19 +1,13 @@
 "use strict";
 import weather from "./weather.js";
-import Weather from "./weather.js";
 
-const container = document.querySelector(".container");
-
-const test = async function () {
-  try {
-    const result = await Weather.callAPI();
-    console.log(result);
-  } catch (err) {
-    console.error(err);
-  }
-};
-
-weather.addComponent(container);
+try {
+  const container = document.querySelector(".container");
+  // const component = weather.addComponent(container, [50.8690432, 20.64384]);
+  weather.start(container);
+} catch (err) {
+  console.log(err);
+}
 
 // const markup = weather.generateMarkup(await Weather.callAPI("Kielce"));
 // container.insertAdjacentHTML("beforeend", markup);
