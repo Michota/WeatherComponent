@@ -127,6 +127,37 @@ class Weather {
     this._componentElement.classList.toggle("mini");
   }
 
+  async _getCode(code) {
+    const allCodes = await fetch("weather_conditions.json");
+    const data = await allCodes.json();
+    // this._createCSSBG(await data);
+    const codeObject = data.filter((el) => el.code === code)[0];
+    return (await this._isDay) ? codeObject.day : codeObject.night;
+  }
+
+  // dev method for creating CSS background images settings
+  async _createCSSBG(data) {
+    let string;
+    console.log(data);
+    data.forEach(
+      (el) =>
+        (string =
+          string +
+          `
+          
+    .weather-component[data-bg="${el.day}"] {
+  background-image: url("/imgs/weather/${el.day}.jpg");
+}
+
+.weather-component[data-bg="${el.night}"] {
+  background-image: url("/imgs/weather/${el.night}.jpg");
+}
+
+    `)
+    );
+    console.log(string);
+  }
+
   async start(parentElement) {
     try {
       this._parentElement = parentElement;
