@@ -1,60 +1,23 @@
-/* === === === TYPOGRAPHY AND FONTS === === === */
-
 /* === Font Import == */
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap");
 
-/* 
---- 01 TYPOGRAPHY SYSTEM
-- SPACING SYSTEM (px)
-2 / 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 80 / 96 / 128
+/* === Weather Component === */
 
-- FONT SIZE SYSTEM (px)
-10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74 / 86 / 98
-
-- FONT WEIGHTS: 
-Deafult: 400 / 500 / 700
-
-- FONT LINE: 
-1.2
-*/
-
-/* FIXME: Temporary settings*/
-body {
-  background-color: darkslategray;
-  color: white;
-  font-size: 1.6rem;
-  font-family: "Inter", sans-serif;
-}
-
-/* General settings */
-
-*,
-*::after,
-*::before {
+.weather-component > :is(*, *::after, *::before, ) {
+  font-size: 0.8em;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5 {
-  font-weight: 400;
-}
-
-/* === === === Components === === ===*/
-
-/* === Weather Component === */
-
 .weather-component {
+  color: white;
+  font-size: 1.6rem;
+  font-family: "Inter", sans-serif;
   padding: 2rem;
-  background-image: url("/imgs/weather/clouds.jpg");
   background-size: auto;
   width: max-content;
   border-radius: 2rem;
-  font-size: 0.8em; /* Setting a font-size for all of the component */
   user-select: none;
   cursor: pointer;
 }
@@ -163,4 +126,390 @@ h5 {
 .weather-component.mini .w-c-text {
   display: flex;
   align-items: center;
+}
+
+/* Backgrounds */
+
+.weather-component[data-bg="Sunny"] {
+  background-image: url("/imgs/weather/Sunny.jpg");
+}
+
+.weather-component[data-bg="Clear"] {
+  background-image: url("/imgs/weather/Clear.jpg");
+}
+
+.weather-component[data-bg="Partly cloudy"] {
+  background-image: url("/imgs/weather/Partly_cloudy.jpg");
+}
+
+.weather-component[data-bg="Partly cloudy"] {
+  background-image: url("/imgs/weather/Partly_cloudy.jpg");
+}
+
+.weather-component[data-bg="Cloudy"] {
+  background-image: url("/imgs/weather/Cloudy.jpg");
+}
+
+.weather-component[data-bg="Cloudy"] {
+  background-image: url("/imgs/weather/Cloudy.jpg");
+}
+
+.weather-component[data-bg="Overcast"] {
+  background-image: url("/imgs/weather/Overcast.jpg");
+}
+
+.weather-component[data-bg="Overcast"] {
+  background-image: url("/imgs/weather/Overcast.jpg");
+}
+
+.weather-component[data-bg="Mist"] {
+  background-image: url("/imgs/weather/Mist.jpg");
+}
+
+.weather-component[data-bg="Mist"] {
+  background-image: url("/imgs/weather/Mist.jpg");
+}
+
+.weather-component[data-bg="Patchy rain possible"] {
+  background-image: url("/imgs/weather/Patchy_rain_possible.jpg");
+}
+
+.weather-component[data-bg="Patchy rain possible"] {
+  background-image: url("/imgs/weather/Patchy_rain_possible.jpg");
+}
+
+.weather-component[data-bg="Patchy snow possible"] {
+  background-image: url("/imgs/weather/Patchy_snow_possible.jpg");
+}
+
+.weather-component[data-bg="Patchy snow possible"] {
+  background-image: url("/imgs/weather/Patchy_snow_possible.jpg");
+}
+
+.weather-component[data-bg="Patchy sleet possible"] {
+  background-image: url("/imgs/weather/Patchy_sleet_possible.jpg");
+}
+
+.weather-component[data-bg="Patchy sleet possible"] {
+  background-image: url("/imgs/weather/Patchy_sleet_possible.jpg");
+}
+
+.weather-component[data-bg="Patchy freezing drizzle possible"] {
+  background-image: url("/imgs/weather/Patchy_freezing_drizzle_possible.jpg");
+}
+
+.weather-component[data-bg="Patchy freezing drizzle possible"] {
+  background-image: url("/imgs/weather/Patchy_freezing_drizzle_possible.jpg");
+}
+
+.weather-component[data-bg="Thundery outbreaks possible"] {
+  background-image: url("/imgs/weather/Thundery_outbreaks_possible.jpg");
+}
+
+.weather-component[data-bg="Thundery outbreaks possible"] {
+  background-image: url("/imgs/weather/Thundery_outbreaks_possible.jpg");
+}
+
+.weather-component[data-bg="Blowing snow"] {
+  background-image: url("/imgs/weather/Blowing_snow.jpg");
+}
+
+.weather-component[data-bg="Blowing snow"] {
+  background-image: url("/imgs/weather/Blowing_snow.jpg");
+}
+
+.weather-component[data-bg="Blizzard"] {
+  background-image: url("/imgs/weather/Blizzard.jpg");
+}
+
+.weather-component[data-bg="Blizzard"] {
+  background-image: url("/imgs/weather/Blizzard.jpg");
+}
+
+.weather-component[data-bg="Fog"] {
+  background-image: url("/imgs/weather/Fog.jpg");
+}
+
+.weather-component[data-bg="Fog"] {
+  background-image: url("/imgs/weather/Fog.jpg");
+}
+
+.weather-component[data-bg="Freezing fog"] {
+  background-image: url("/imgs/weather/Freezing_fog.jpg");
+}
+
+.weather-component[data-bg="Freezing fog"] {
+  background-image: url("/imgs/weather/Freezing_fog.jpg");
+}
+
+.weather-component[data-bg="Patchy light drizzle"] {
+  background-image: url("/imgs/weather/Patchy_light_drizzle.jpg");
+}
+
+.weather-component[data-bg="Patchy light drizzle"] {
+  background-image: url("/imgs/weather/Patchy_light_drizzle.jpg");
+}
+
+.weather-component[data-bg="Light drizzle"] {
+  background-image: url("/imgs/weather/Light_drizzle.jpg");
+}
+
+.weather-component[data-bg="Light drizzle"] {
+  background-image: url("/imgs/weather/Light_drizzle.jpg");
+}
+
+.weather-component[data-bg="Freezing drizzle"] {
+  background-image: url("/imgs/weather/Freezing_drizzle.jpg");
+}
+
+.weather-component[data-bg="Freezing drizzle"] {
+  background-image: url("/imgs/weather/Freezing_drizzle.jpg");
+}
+
+.weather-component[data-bg="Heavy freezing drizzle"] {
+  background-image: url("/imgs/weather/Heavy_freezing_drizzle.jpg");
+}
+
+.weather-component[data-bg="Heavy freezing drizzle"] {
+  background-image: url("/imgs/weather/Heavy_freezing_drizzle.jpg");
+}
+
+.weather-component[data-bg="Patchy light rain"] {
+  background-image: url("/imgs/weather/Patchy_light_rain.jpg");
+}
+
+.weather-component[data-bg="Patchy light rain"] {
+  background-image: url("/imgs/weather/Patchy_light_rain.jpg");
+}
+
+.weather-component[data-bg="Light rain"] {
+  background-image: url("/imgs/weather/Light_rain.jpg");
+}
+
+.weather-component[data-bg="Light rain"] {
+  background-image: url("/imgs/weather/Light_rain.jpg");
+}
+
+.weather-component[data-bg="Moderate rain at times"] {
+  background-image: url("/imgs/weather/Moderate_rain_at_times.jpg");
+}
+
+.weather-component[data-bg="Moderate rain at times"] {
+  background-image: url("/imgs/weather/Moderate_rain_at_times.jpg");
+}
+
+.weather-component[data-bg="Moderate rain"] {
+  background-image: url("/imgs/weather/Moderate_rain.jpg");
+}
+
+.weather-component[data-bg="Moderate rain"] {
+  background-image: url("/imgs/weather/Moderate_rain.jpg");
+}
+
+.weather-component[data-bg="Heavy rain at times"] {
+  background-image: url("/imgs/weather/Heavy_rain_at_times.jpg");
+}
+
+.weather-component[data-bg="Heavy rain at times"] {
+  background-image: url("/imgs/weather/Heavy_rain_at_times.jpg");
+}
+
+.weather-component[data-bg="Heavy rain"] {
+  background-image: url("/imgs/weather/Heavy_rain.jpg");
+}
+
+.weather-component[data-bg="Heavy rain"] {
+  background-image: url("/imgs/weather/Heavy_rain.jpg");
+}
+
+.weather-component[data-bg="Light freezing rain"] {
+  background-image: url("/imgs/weather/Light_freezing_rain.jpg");
+}
+
+.weather-component[data-bg="Light freezing rain"] {
+  background-image: url("/imgs/weather/Light_freezing_rain.jpg");
+}
+
+.weather-component[data-bg="Moderate or heavy freezing rain"] {
+  background-image: url("/imgs/weather/Moderate_or_heavy_freezing_rain.jpg");
+}
+
+.weather-component[data-bg="Moderate or heavy freezing rain"] {
+  background-image: url("/imgs/weather/Moderate_or_heavy_freezing_rain.jpg");
+}
+
+.weather-component[data-bg="Light sleet"] {
+  background-image: url("/imgs/weather/Light_sleet.jpg");
+}
+
+.weather-component[data-bg="Light sleet"] {
+  background-image: url("/imgs/weather/Light_sleet.jpg");
+}
+
+.weather-component[data-bg="Moderate or heavy sleet"] {
+  background-image: url("/imgs/weather/Moderate_or_heavy_sleet.jpg");
+}
+
+.weather-component[data-bg="Moderate or heavy sleet"] {
+  background-image: url("/imgs/weather/Moderate_or_heavy_sleet.jpg");
+}
+
+.weather-component[data-bg="Patchy light snow"] {
+  background-image: url("/imgs/weather/Patchy_light_snow.jpg");
+}
+
+.weather-component[data-bg="Patchy light snow"] {
+  background-image: url("/imgs/weather/Patchy_light_snow.jpg");
+}
+
+.weather-component[data-bg="Light snow"] {
+  background-image: url("/imgs/weather/Light_snow.jpg");
+}
+
+.weather-component[data-bg="Light snow"] {
+  background-image: url("/imgs/weather/Light_snow.jpg");
+}
+
+.weather-component[data-bg="Patchy moderate snow"] {
+  background-image: url("/imgs/weather/Patchy_moderate_snow.jpg");
+}
+
+.weather-component[data-bg="Patchy moderate snow"] {
+  background-image: url("/imgs/weather/Patchy_moderate_snow.jpg");
+}
+
+.weather-component[data-bg="Moderate snow"] {
+  background-image: url("/imgs/weather/Moderate_snow.jpg");
+}
+
+.weather-component[data-bg="Moderate snow"] {
+  background-image: url("/imgs/weather/Moderate_snow.jpg");
+}
+
+.weather-component[data-bg="Patchy heavy snow"] {
+  background-image: url("/imgs/weather/Patchy_heavy_snow.jpg");
+}
+
+.weather-component[data-bg="Patchy heavy snow"] {
+  background-image: url("/imgs/weather/Patchy_heavy_snow.jpg");
+}
+
+.weather-component[data-bg="Heavy snow"] {
+  background-image: url("/imgs/weather/Heavy_snow.jpg");
+}
+
+.weather-component[data-bg="Heavy snow"] {
+  background-image: url("/imgs/weather/Heavy_snow.jpg");
+}
+
+.weather-component[data-bg="Ice pellets"] {
+  background-image: url("/imgs/weather/Ice_pellets.jpg");
+}
+
+.weather-component[data-bg="Ice pellets"] {
+  background-image: url("/imgs/weather/Ice_pellets.jpg");
+}
+
+.weather-component[data-bg="Light rain shower"] {
+  background-image: url("/imgs/weather/Light_rain_shower.jpg");
+}
+
+.weather-component[data-bg="Light rain shower"] {
+  background-image: url("/imgs/weather/Light_rain_shower.jpg");
+}
+
+.weather-component[data-bg="Moderate or heavy rain shower"] {
+  background-image: url("/imgs/weather/Moderate_or_heavy_rain_shower.jpg");
+}
+
+.weather-component[data-bg="Moderate or heavy rain shower"] {
+  background-image: url("/imgs/weather/Moderate_or_heavy_rain_shower.jpg");
+}
+
+.weather-component[data-bg="Torrential rain shower"] {
+  background-image: url("/imgs/weather/Torrential_rain_shower.jpg");
+}
+
+.weather-component[data-bg="Torrential rain shower"] {
+  background-image: url("/imgs/weather/Torrential_rain_shower.jpg");
+}
+
+.weather-component[data-bg="Light sleet showers"] {
+  background-image: url("/imgs/weather/Light_sleet_showers.jpg");
+}
+
+.weather-component[data-bg="Light sleet showers"] {
+  background-image: url("/imgs/weather/Light_sleet_showers.jpg");
+}
+
+.weather-component[data-bg="Moderate or heavy sleet showers"] {
+  background-image: url("/imgs/weather/Moderate_or_heavy_sleet_showers.jpg");
+}
+
+.weather-component[data-bg="Moderate or heavy sleet showers"] {
+  background-image: url("/imgs/weather/Moderate_or_heavy_sleet_showers.jpg");
+}
+
+.weather-component[data-bg="Light snow showers"] {
+  background-image: url("/imgs/weather/Light_snow_showers.jpg");
+}
+
+.weather-component[data-bg="Light snow showers"] {
+  background-image: url("/imgs/weather/Light_snow_showers.jpg");
+}
+
+.weather-component[data-bg="Moderate or heavy snow showers"] {
+  background-image: url("/imgs/weather/Moderate_or_heavy_snow_showers.jpg");
+}
+
+.weather-component[data-bg="Moderate or heavy snow showers"] {
+  background-image: url("/imgs/weather/Moderate_or_heavy_snow_showers.jpg");
+}
+
+.weather-component[data-bg="Light showers of ice pellets"] {
+  background-image: url("/imgs/weather/Light_showers_of_ice_pellets.jpg");
+}
+
+.weather-component[data-bg="Light showers of ice pellets"] {
+  background-image: url("/imgs/weather/Light_showers_of_ice_pellets.jpg");
+}
+
+.weather-component[data-bg="Moderate or heavy showers of ice pellets"] {
+  background-image: url("/imgs/weather/Moderate_or_heavy_showers_of_ice_pellets.jpg");
+}
+
+.weather-component[data-bg="Moderate or heavy showers of ice pellets"] {
+  background-image: url("/imgs/weather/Moderate_or_heavy_showers_of_ice_pellets.jpg");
+}
+
+.weather-component[data-bg="Patchy light rain with thunder"] {
+  background-image: url("/imgs/weather/Patchy_light_rain_with_thunder.jpg");
+}
+
+.weather-component[data-bg="Patchy light rain with thunder"] {
+  background-image: url("/imgs/weather/Patchy_light_rain_with_thunder.jpg");
+}
+
+.weather-component[data-bg="Moderate or heavy rain with thunder"] {
+  background-image: url("/imgs/weather/Moderate_or_heavy_rain_with_thunder.jpg");
+}
+
+.weather-component[data-bg="Moderate or heavy rain with thunder"] {
+  background-image: url("/imgs/weather/Moderate_or_heavy_rain_with_thunder.jpg");
+}
+
+.weather-component[data-bg="Patchy light snow with thunder"] {
+  background-image: url("/imgs/weather/Patchy_light_snow_with_thunder.jpg");
+}
+
+.weather-component[data-bg="Patchy light snow with thunder"] {
+  background-image: url("/imgs/weather/Patchy_light_snow_with_thunder.jpg");
+}
+
+.weather-component[data-bg="Moderate or heavy snow with thunder"] {
+  background-image: url("/imgs/weather/Moderate_or_heavy_snow_with_thunder.jpg");
+}
+
+.weather-component[data-bg="Moderate or heavy snow with thunder"] {
+  background-image: url("/imgs/weather/Moderate_or_heavy_snow_with_thunder.jpg");
 }

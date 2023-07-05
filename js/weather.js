@@ -9,6 +9,7 @@ class Weather {
   _data;
   _componentElement;
   _parentElement;
+  _weatherNow;
 
   async _callAPI(
     location = "Warsaw",
@@ -55,7 +56,10 @@ class Weather {
     const fillTemplateWithData = async () => {
       data = await data;
       return `
-    <div class="weather-component">
+    <div class="weather-component" data-bg="${await this._getCode(
+      data.current.condition.code,
+      data.current.is_day
+    )}">
           <div class="w-top-part">
             <div class="w-current">
               <img class="w-icon" src="${data.current.condition.icon}" />
@@ -127,35 +131,11 @@ class Weather {
     this._componentElement.classList.toggle("mini");
   }
 
-  async _getCode(code) {
+  async _getCode(code, isDay) {
     const allCodes = await fetch("weather_conditions.json");
     const data = await allCodes.json();
-    // this._createCSSBG(await data);
     const codeObject = data.filter((el) => el.code === code)[0];
-    return (await this._isDay) ? codeObject.day : codeObject.night;
-  }
-
-  // dev method for creating CSS background images settings
-  async _createCSSBG(data) {
-    let string;
-    console.log(data);
-    data.forEach(
-      (el) =>
-        (string =
-          string +
-          `
-          
-    .weather-component[data-bg="${el.day}"] {
-  background-image: url("/imgs/weather/${el.day}.jpg");
-}
-
-.weather-component[data-bg="${el.night}"] {
-  background-image: url("/imgs/weather/${el.night}.jpg");
-}
-
-    `)
-    );
-    console.log(string);
+    return isDay ? codeObject.day : codeObject.night;
   }
 
   async start(parentElement) {
