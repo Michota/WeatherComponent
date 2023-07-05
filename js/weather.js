@@ -7,27 +7,33 @@ import {
 WEATHER_API_KEY;
 class Weather {
   _data;
+  _componentElement;
+  _parentElement;
 
   async _callAPI(
     location = "Warsaw",
     requestType = "forecast",
     APIKey = WEATHER_API_KEY
   ) {
-    const response = await fetch(
-      `http://api.weatherapi.com/v1/${requestType}.json?key=${APIKey}&q=${location}${
-        requestType === "forecast" ? "&days=3" : ""
-      }`
-    );
-    if (response.ok !== true) {
-      const { error } = await response.json();
-      throw error;
+    try {
+      const response = await fetch(
+        `http://api.weatherapi.com/v1/${requestType}.json?key=${APIKey}&q=${location}${
+          requestType === "forecast" ? "&days=3" : ""
+        }`
+      );
+      if (response.ok !== true) {
+        const { error } = await response.json();
+        throw error;
+      }
+      const data = await response.json();
+      this._data = data;
+      return data;
+    } catch (err) {
+      throw err;
     }
-    const data = await response.json();
-    this._data = data;
-    return data;
   }
 
-  async _addComponent(parentElement, location) {
+  async _addComponent(parentElement = this._parentElement, location) {
     let markup;
     if (!location) {
       markup = this._generateMarkup();
@@ -36,17 +42,18 @@ class Weather {
     }
     parentElement.insertAdjacentHTML("afterbegin", await markup);
     const componentEl = parentElement.querySelector(".weather-component");
-    this.clickToShrink(componentEl);
-    return componentEl;
-    // TODO: toggle "mini" class on click
+    componentEl.addEventListener(
+      "click",
+      function (e) {
+        this._clickToShrink(e);
+      }.bind(this)
+    );
   }
 
-  // async _generateMarkup(data = this._callAPI(undefined)) {
   async _generateMarkup(location) {
     let data = this._callAPI(location);
     const fillTemplateWithData = async () => {
       data = await data;
-      console.log(data);
       return `
     <div class="weather-component">
           <div class="w-top-part">
@@ -113,15 +120,16 @@ class Weather {
     return newDate;
   }
 
-  clickToShrink(componentEl) {
-    componentEl.addEventListener("click", function (e) {
-      const allTheComponent = e.target.closest(".weather-component");
-      allTheComponent.classList.toggle("mini");
-    });
+  _clickToShrink(e = this._componentElement) {
+    if (e !== this._componentElement) {
+      this._componentElement = e.target.closest(".weather-component");
+    }
+    this._componentElement.classList.toggle("mini");
   }
 
   async start(parentElement) {
     try {
+      this._parentElement = parentElement;
       const options = {
         enableHighAccuracy: false,
         timeout: 5000,
@@ -130,9 +138,8 @@ class Weather {
 
       function success(pos) {
         const crd = pos.coords;
-        console.log(crd);
         const { latitude, longitude } = crd;
-        this._addComponent(parentElement, [latitude, longitude]);
+        this._addComponent(this._parentElement, [latitude, longitude]);
       }
 
       function error(err) {

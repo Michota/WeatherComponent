@@ -8,6 +8,3 @@ try {
 } catch (err) {
   console.log(err);
 }
-
-// const markup = weather.generateMarkup(await Weather.callAPI("Kielce"));
-// container.insertAdjacentHTML("beforeend", markup);
