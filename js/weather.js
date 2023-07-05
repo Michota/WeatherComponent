@@ -17,7 +17,7 @@ class Weather {
   ) {
     try {
       const response = await fetch(
-        `http://api.weatherapi.com/v1/${requestType}.json?key=${APIKey}&q=${location}${
+        `https://api.weatherapi.com/v1/${requestType}.json?key=${APIKey}&q=${location}${
           requestType === "forecast" ? "&days=3" : ""
         }`
       );
