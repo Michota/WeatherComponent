@@ -2,7 +2,7 @@
   "name": "michotaweather",
   "version": "1.0.0",
   "description": "A simple module for creating a Weather Component-Widget on HTML site.",
-  "main": "index.js",
+  "main": "weather.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
