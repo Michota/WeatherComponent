@@ -39,7 +39,7 @@ Some screenshoots. As you can see, page is fully responsive.
 - KILOMETERS_OR_MILES: Allows you to change from  kilometers per hour (kph) to miles per hour (mph). Use to change wind speed unit.
 
 #### Photos were taken from https://unsplash.com/
-Authors:
+Photos were taken by:
  
 - Jaime Dantas
 - Christian SPULLER
